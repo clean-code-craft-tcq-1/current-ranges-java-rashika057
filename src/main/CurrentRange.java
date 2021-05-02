@@ -21,24 +21,26 @@ public class CurrentRange {
 	}
 
 	public void detectAndPrintReadingsInRange() {
-		List<Integer> readingsInSequence = new ArrayList<>();
 		if(this.isNull())
 			throw new IllegalArgumentException();
+		List<Integer> readingsInSequence = new ArrayList<>();		
 		printOutPutHeading();
 		this.currentReadingList.forEach(reading -> {
 			if(readingsInSequence.isEmpty() || Math.abs(readingsInSequence.get(readingsInSequence.size()-1) - reading) <=2) {
 				readingsInSequence.add(reading);
 			}
 			else {
-				if(readingsInSequence.size() > 1) {
-					Collections.sort(readingsInSequence);
-					printReadingsinRange(readingsInSequence.get(0)+"-"+readingsInSequence.get(readingsInSequence.size()-1)+", "+Integer.toString(readingsInSequence.size()));
-				}
+				formatandSendMessageForPrinting(readingsInSequence);
 				readingsInSequence.clear();
 				readingsInSequence.add(reading);
 			}
 		});
+		formatandSendMessageForPrinting(readingsInSequence);
+		}
+	
+	private void formatandSendMessageForPrinting(List<Integer> readingsInSequence) {
 		if(!readingsInSequence.isEmpty()) {
+		Collections.sort(readingsInSequence);
 		printReadingsinRange(readingsInSequence.get(0)+"-"+readingsInSequence.get(readingsInSequence.size()-1)+", "+Integer.toString(readingsInSequence.size()));
 		}
 		}
