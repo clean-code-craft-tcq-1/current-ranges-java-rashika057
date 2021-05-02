@@ -66,7 +66,7 @@ public class CurrentRangeTestSuite {
 			      .trim(),"Range, Readings");
 		    }
 	 
-	 @Test(expected = IllegalArgumentException.class)
+	 @Test(expected = NullPointerException.class)
 	    public  void givenNullReadings_whenDetectAndCountReadingsInRange_thenGetExpectedOutput() throws IOException {
 				//given
 		 		CurrentRange currentRange = new CurrentRange(null);

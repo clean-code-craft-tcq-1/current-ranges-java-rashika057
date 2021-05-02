@@ -2,9 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class CurrentRange {
 	List<Integer> currentReadingList;
@@ -15,14 +13,8 @@ public class CurrentRange {
 	public boolean isEmpty() {
 		return this.currentReadingList.isEmpty();
 	}
-	
-	public boolean isNull() {
-		return Objects.isNull(this.currentReadingList);
-	}
 
 	public void detectAndPrintReadingsInRange() {
-		if(this.isNull())
-			throw new IllegalArgumentException();
 		List<Integer> readingsInSequence = new ArrayList<>();		
 		printOutPutHeading();
 		this.currentReadingList.forEach(reading -> {
